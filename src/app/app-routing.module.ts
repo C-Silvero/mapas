@@ -1,7 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+const routes: Routes = [
+
+  {path: 'mapa',
+    loadChildren: () => import('./mapas/mapas.module').then(m => m.MapasModule)
+  }
+
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

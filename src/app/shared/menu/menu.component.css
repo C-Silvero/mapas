@@ -1,0 +1,10 @@
+li, ul {
+    list-style: none;
+    margin-top: 0.3rem;
+}
+
+span {
+    padding: 10px;
+    cursor: pointer;
+    letter-spacing: 1px;
+}

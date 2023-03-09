@@ -1,0 +1,19 @@
+.mapa-container {
+    width: 100%;
+    height: 100%;
+}
+
+.row {
+    background-color: white;
+    border-radius: 5px ;
+    bottom: 4rem;
+    left: 3rem;
+    z-index: 999;
+    position: fixed;
+}
+.col {
+    border-radius: 5px;
+}
+button {
+    margin-bottom: 3px;
+}

@@ -1,0 +1,20 @@
+<div #mapa id="mapa" class="mapa-container">
+    
+</div>
+
+<div class="row">
+    <div class="col-12 text-center">
+        <span>Zoom {{zoom | number:'0.0-2'}} [Long, Lat] </span>
+    </div>
+    <div class="col">
+        <button (click)="zoomIn()"
+        class="btn btn-info" >
+            +
+        </button>
+        <button (click)="zoomOut()"
+        class="btn btn-info float-end">
+            -
+        </button>
+    </div>
+    
+</div>
