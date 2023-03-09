@@ -13,7 +13,7 @@ export class ZoomComponent implements AfterViewInit {
 
   mapa!: mapboxgl.Map
   zoom: number = 10;
-
+  center: [number, number] = [-58.853723,-27.469717];
 
   constructor(private mapService: MapaService){
   }
@@ -21,7 +21,7 @@ export class ZoomComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.mapa = new mapboxgl.Map({
     container: this.divMapa.nativeElement,
-    center: [-58.853723,-27.469717],
+    center: this.center,
     zoom: 16,
     style: 'mapbox://styles/mapbox/streets-v11'    
   });
@@ -34,6 +34,12 @@ export class ZoomComponent implements AfterViewInit {
       if ( this.mapa.getZoom() > 18) {
         this.mapa.zoomTo( 18 )
       }
+    })
+
+    this.mapa.on('move', (e) => {
+      const target = e.target;
+      const { lng, lat} = target.getCenter();
+      this.center = [lng, lat]
     })
 
   }

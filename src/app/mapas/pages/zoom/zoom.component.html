@@ -2,11 +2,16 @@
     
 </div>
 
-<div class="row">
+<div class="row"> 
     <div class="col-12 text-center">
-        <span>Zoom {{zoom | number:'0.0-2'}} [Long, Lat] </span>
+        <span>Zoom {{zoom | number:'0.0-2'}} 
+        </span>
     </div>
-    <div class="col">
+    <div class="col-12 text-center">
+        <span> Latitud: [{{center[0] | number: '2.4-4'}}] - Longitud [{{center[1]  | number: '2.4-4'}}]</span>
+    </div>
+    <div class="col-12">
+
         <button (click)="zoomIn()"
         class="btn btn-info" >
             +
@@ -16,5 +21,4 @@
             -
         </button>
     </div>
-    
 </div>
