@@ -3,7 +3,8 @@ import * as mapboxgl from 'mapbox-gl';
 
 interface Marcador {
   color: string;
-  marker: mapboxgl.Marker;
+  marker?: mapboxgl.Marker;
+  centro?: [number, number];
 }
 
 
@@ -29,7 +30,7 @@ export class MarcadoresComponent implements AfterViewInit {
     style: 'mapbox://styles/mapbox/streets-v11'    
     });
 
-    
+    this.leerLocalStorage()
   }
 
   agregarMarcador(){
@@ -44,12 +45,38 @@ export class MarcadoresComponent implements AfterViewInit {
       marker
     })
 
+    this.guardarMarcadores()
   }
 
-  irLugar( marker: mapboxgl.Marker){
+  guardarMarcadores(){
+    const lngLat: Marcador[] = []
+
+    this.marcadores.forEach( m => {
+
+      const color = m.color;
+      const {lng, lat} = m.marker!.getLngLat();
+
+      lngLat.push({
+        color: color,
+        centro: [lng, lat]
+      })
+    })
+
+    localStorage.setItem('Marcadores', JSON.stringify(lngLat))
+
+  }
+
+  leerLocalStorage(){
+     if (!localStorage.getItem('marcadores')){ return }
+
+     const lngLat: Marcador[] = JSON.parse(localStorage.getItem('marcadores')!)
+  }
+
+
+  irLugar( marker: mapboxgl.Marker) {
     this.mapa.flyTo({
       center: marker.getLngLat(),
-      zoom: 17
+      zoom: 18
     })
   }
 

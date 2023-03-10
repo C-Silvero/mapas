@@ -21,7 +21,7 @@
             [ngStyle]="{
                 'color': marcador.color
             }"
-            (click)="irLugar( marcador.marker )"
+            (click)="irLugar( marcador.marker! )"
             class="list-group-item list-group-item-light">Lugar {{i + 1}}</li>
         </ul>
     </div>
